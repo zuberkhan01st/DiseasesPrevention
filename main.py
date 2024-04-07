@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import pickle
 
-# Load datasets and model
 sym_des = pd.read_csv("description.csv")
 precautions = pd.read_csv("precautions_df.csv")
 workout = pd.read_csv("workout_df.csv")
@@ -12,7 +11,6 @@ medications = pd.read_csv('medications.csv')
 diets = pd.read_csv("diets.csv")
 svc = pickle.load(open('svc.pkl', 'rb'))
 
-# Define helper functions
 def helper(dis):
     desc = description[description['Disease'] == dis]['Description']
     desc = " ".join([w for w in desc])
@@ -43,7 +41,6 @@ def get_predicted_value(patient_symptoms):
     return diseases_list[svc.predict(input_vector)[0]]
 
 
-# Streamlit app
 def main():
     
     st.title("Health Genie 🧞")
